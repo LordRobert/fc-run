@@ -1,0 +1,24 @@
+{
+  "name": "fc-run",
+  "version": "1.0.0",
+  "description": "a boot tool for ali function-compute proj",
+  "main": "fc-run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LordRobert/fc-run.git"
+  },
+  "keywords": [
+    "function",
+    "compute",
+    "fc"
+  ],
+  "author": "lordrobert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LordRobert/fc-run/issues"
+  },
+  "homepage": "https://github.com/LordRobert/fc-run#readme"
+}
