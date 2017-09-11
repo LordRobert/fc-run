@@ -1,6 +1,6 @@
 var chalk = require('chalk');
-
 const log = console.log
+
 
 function run () {
     var path = require('path');
@@ -8,20 +8,18 @@ function run () {
 
     var entry = 'index.js';
     var data = 'data.json';
-    var RETURN_ERR = {
-        err: true
-    }
-    var RETURN_DATA = {
-        err: false
-    }
+    var root = '';
 
     arguments = process.argv;
     arguments.forEach((arg, index) => {
         if(arg === '-m') {
             entry = arguments[index + 1] || entry;
         }
-        if(arg === '-d') {
+        if(arg === '-p') {
             data = arguments[index + 1] || data;
+        }
+        if(arg === '-d') {
+            process.env.INIT_CWD = arguments[index + 1] || process.env.INIT_CWD;
         }
     });
 
