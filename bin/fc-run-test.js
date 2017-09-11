@@ -2,6 +2,4 @@
 
 'use strict';
 var lib= require('../fc-run.js');
-var message = lib.run();
- 
-console.log(message);
+lib.run();

@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/LordRobert/fc-run/issues"
   },
-  "homepage": "https://github.com/LordRobert/fc-run#readme"
+  "homepage": "https://github.com/LordRobert/fc-run#readme",
+  "dependencies": {
+    "chalk": "^2.1.0"
+  }
 }

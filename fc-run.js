@@ -1,15 +1,12 @@
-var function run () {
+var chalk = require('chalk');
+
+
+function run () {
     var path = require('path');
     var fs = require('fs');
 
     var entry = 'index.js';
     var data = 'data.json';
-
-
-    //test
-    console.log('当前目录');
-    console.log(__dirname);
-
 
     arguments = process.argv;
     arguments.forEach((arg, index) => {
@@ -25,11 +22,11 @@ var function run () {
     var dataPath = path.resolve(__dirname, data);
 
     if(!fs.existsSync(entryPath)) {
-        console.log('函数入口文件(index.js)不存在！');
+        chalk.magenta('函数入口文件(index.js)不存在！');
         return;
     }
     if(!fs.existsSync(dataPath)) {
-        console.log('参数文件(daa.json)不存在！');
+        chalk.magenta('参数文件(daa.json)不存在！');
         return;
     }
 
@@ -46,10 +43,8 @@ var function run () {
         }
         rtn += '函数运行结果：';
         console.log(rtn);
-        return(error || data);
+        console.log(error || data);
     });
-
-    return 'message........';
 }
 
 exports.run = run;
