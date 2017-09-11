@@ -1,5 +1,6 @@
 var chalk = require('chalk');
 
+const log = console.log
 
 function run () {
     var path = require('path');
@@ -7,6 +8,12 @@ function run () {
 
     var entry = 'index.js';
     var data = 'data.json';
+    var RETURN_ERR = {
+        err: true
+    }
+    var RETURN_DATA = {
+        err: false
+    }
 
     arguments = process.argv;
     arguments.forEach((arg, index) => {
@@ -18,20 +25,21 @@ function run () {
         }
     });
 
-    var entryPath = path.resolve(__dirname, entry);
-    var dataPath = path.resolve(__dirname, data);
+
+    var entryPath = path.resolve(process.env.INIT_CWD, entry);
+    var dataPath = path.resolve(process.env.INIT_CWD, data);
 
     if(!fs.existsSync(entryPath)) {
-        chalk.magenta('函数入口文件(index.js)不存在！');
+        log(chalk.redBright('函数入口文件(index.js)不存在！'));
         return;
     }
     if(!fs.existsSync(dataPath)) {
-        chalk.magenta('参数文件(daa.json)不存在！');
+        log(chalk.redBright('参数文件(daa.json)不存在！'));
         return;
     }
 
-    var func = require('./' + entry);
-    var data = require('./' + data);
+    var func = require(entryPath);
+    var data = require(dataPath);
 
     func.handler(JSON.stringify(data), {}, function(error, data) {
         var now = new Date();
@@ -43,7 +51,7 @@ function run () {
         }
         rtn += '函数运行结果：';
         console.log(rtn);
-        console.log(error || data);
+        log(error || data);
     });
 }
 
