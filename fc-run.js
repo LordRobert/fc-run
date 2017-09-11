@@ -4,6 +4,12 @@ var fs = require('fs');
 var entry = 'index.js';
 var data = 'data.json';
 
+
+//test
+console.log('当前目录');
+console.log(__dirname);
+
+
 arguments = process.argv;
 arguments.forEach((arg, index) => {
     if(arg === '-m') {
