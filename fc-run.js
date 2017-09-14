@@ -39,18 +39,25 @@ function run () {
     var func = require(entryPath);
     var data = require(dataPath);
 
-    func.handler(JSON.stringify(data), {}, function(error, data) {
+    func.handler(wrapData(data), {}, function(error, data) {
         var now = new Date();
         var rtn = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
         if (error) {
-            rtn += '【error】';
+            rtn += '[error]';
         } else {
-            rtn += '【info】';
+            rtn += '[info]';
         }
-        rtn += '函数运行结果：';
+        rtn += '函数运行结果:';
         console.log(rtn);
         log(error || data);
     });
+}
+
+const wrapData = function (data) {
+    data.toString = function () {
+        return JSON.stringify(data);
+    }
+    return data;
 }
 
 exports.run = run;
